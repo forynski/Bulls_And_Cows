@@ -1,6 +1,5 @@
 package bullscows;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -34,6 +33,7 @@ public class Main {
             result = cows + " cow(s).";
         }
         System.out.println(result);
+        System.out.println("The secret code is " + secretCode);
     }
 }
 
