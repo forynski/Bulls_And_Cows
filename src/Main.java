@@ -5,37 +5,40 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         generateSecretCode();
+//        calculateCowsAndBulls();
 
-//        final String secretCode = "9305";
-//
-//        Scanner scanner = new Scanner(System.in);
-//        String input = scanner.nextLine();
-//
-//        int cows = 0;
-//        int bulls = 0;
-//
-//        for (int i = 0; i < 4; i++) {
-//            if (input.charAt(i) == secretCode.charAt(i)) {
-//                bulls++;
-//            } else if (secretCode.indexOf(input.charAt(i)) > -1) {
-//                cows++;
-//            }
-//        }
-//        if (bulls + cows == 0) {
-//            System.out.println("None");
-//        }
-//        String result;
-//        if (bulls > 0) {
-//            result = bulls + " bull(s).";
-//            if (cows > 0) {
-//                result += " and " + cows + " cow(s).";
-//            }
-//        } else {
-//            result = cows + " cow(s).";
-//        }
-//        System.out.println(result);
-//        System.out.println("The secret code is " + secretCode);
+    }
 
+    private static void calculateCowsAndBulls() {
+        final String secretCode = "9305";
+
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        int cows = 0;
+        int bulls = 0;
+
+        for (int i = 0; i < 4; i++) {
+            if (input.charAt(i) == secretCode.charAt(i)) {
+                bulls++;
+            } else if (secretCode.indexOf(input.charAt(i)) > -1) {
+                cows++;
+            }
+        }
+        if (bulls + cows == 0) {
+            System.out.println("None");
+        }
+        String result;
+        if (bulls > 0) {
+            result = bulls + " bull(s).";
+            if (cows > 0) {
+                result += " and " + cows + " cow(s).";
+            }
+        } else {
+            result = cows + " cow(s).";
+        }
+        System.out.println(result);
+        System.out.println("The secret code is " + secretCode);
     }
 
     static void generateSecretCode() {
@@ -46,13 +49,9 @@ public class Main {
         } else {
 
             long pseudoRandomNumber = System.nanoTime();
-
-            String s1 = Integer.toString(sc);
+            
             String s2 = Long.toString(pseudoRandomNumber);
 
-
-//        System.out.println(s1);
-//        System.out.println(s2);
 
             char[] chars = s2.toCharArray();
             Set<Character> characterSet = new LinkedHashSet<>();
@@ -65,7 +64,6 @@ public class Main {
                 sb.append(character);
             }
 
-//        System.out.println(sb.toString());
             System.out.println("The random secret number is " + sb.substring(0, sc));
 
         }
