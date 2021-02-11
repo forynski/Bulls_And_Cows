@@ -10,11 +10,11 @@ public class Main {
         int sc = scanner.nextInt();
         if (sc > 10) {
             System.out.println("Error: can't generate a secret number with a length of 11 because there aren't enough unique digits.");
+        } else {
+
+            String secretCode = generateSecretCode(sc);
+            calculateCowsAndBulls(secretCode, sc);
         }
-
-        String secretCode = generateSecretCode(sc);
-        calculateCowsAndBulls(secretCode, sc);
-
     }
 
     static String generateSecretCode(int sc) {
@@ -43,13 +43,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         scanner.hasNextLine();
 
-
-        int cows = 0;
-        int bulls = 0;
+        int bulls;
+        int cows;
 
         do {
             String input = scanner.nextLine();
-
+            cows = 0;
+            bulls = 0;
 
             for (int i = 0; i < sc; i++) {
                 if (input.charAt(i) == secretCode.charAt(i)) {
@@ -72,8 +72,8 @@ public class Main {
             }
             System.out.println("Grade " + result);
         } while (bulls != sc);
-
     }
 
-
 }
+
+
