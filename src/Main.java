@@ -19,8 +19,9 @@ public class Main {
 
     static String generateSecretCode(int sc) {
 
-        long pseudoRandomNumber = System.nanoTime();
-        String s2 = Long.toString(pseudoRandomNumber);
+        Random random = new Random();
+        int randomNumber = Math.abs(random.nextInt());
+        String s2 = Integer.toString(randomNumber);
 
         char[] chars = s2.toCharArray();
         Set<Character> characterSet = new LinkedHashSet<>();
@@ -75,5 +76,3 @@ public class Main {
     }
 
 }
-
-
