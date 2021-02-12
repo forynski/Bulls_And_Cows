@@ -54,15 +54,22 @@ public class Main {
 
 
         StringBuilder sb = new StringBuilder(sc);
-        for (int i = 0; i < sc; i++)
+        for (int i = 0; i < sc; i++) {
             sb.append(chars.charAt(i));
-
+        }
 //        shuffle(sb);
 
+
+//        String secret = sb.toString();
+        String secretAsterisks = "";
+        for (int i = 0; i < sb.length(); i++) {
+            secretAsterisks+= '*';
+        }
+//        String secretAsterisks = secret.replaceAll("[a-z0-9]+$", "*");
+
 //        String secret = sb.toString().replaceAll("[a-z0-9]+$", "*");
-// TODO: secret code as asterisks
         
-//        System.out.println("The secret is prepared: " + secret + " (0-9, a-f).");
+        System.out.println("The secret is prepared: " + secretAsterisks + " (0-9, a-f).");
 
 //        return shuffle(sb);
         return sb.toString();
