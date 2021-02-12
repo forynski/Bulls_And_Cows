@@ -23,8 +23,22 @@ public class Main {
         System.out.println("Input the number of possible symbols in the code:");
         Scanner scanner = new Scanner(System.in);
         scanner.hasNextLine();
+        String charLength = scanner.nextLine();
 
-        String chars = "0123456789abcdefghijklmnopqrstuvwxyz";
+        String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
+//        shuffle(allChars);
+        allChars = allChars.substring(0, Integer.parseInt(charLength));
+
+        List<String> symbols = Arrays.asList(allChars.split(""));
+        Collections.shuffle(symbols);
+        StringBuilder builder = new StringBuilder();
+        for (String symbol : symbols) {
+            builder.append(symbol);
+        }
+//        builder.toString();
+
+        String chars = builder.substring(0, Integer.parseInt(charLength));
+
 
 //        Random random = new Random();
 
@@ -37,6 +51,8 @@ public class Main {
 //            characterSet.add(c);
 //        }
 
+
+
         StringBuilder sb = new StringBuilder(sc);
         for (int i = 0; i < sc; i++)
             sb.append(chars.charAt(i));
@@ -44,23 +60,25 @@ public class Main {
 //        shuffle(sb);
 
 //        String secret = sb.toString().replaceAll("[a-z0-9]+$", "*");
-//
+// TODO: secret code as asterisks
+        
 //        System.out.println("The secret is prepared: " + secret + " (0-9, a-f).");
 
-        return shuffle(sb);
-//        return sb.toString();
+//        return shuffle(sb);
+        return sb.toString();
 //        return sb.substring(0, sc);
     }
 
-    private static String shuffle(StringBuilder sb) {
-        char[] characters = sb.toString().toCharArray();
+    private static void shuffle(String allChars) {
+        char[] characters = allChars.toCharArray();
         for (int i = 0; i < characters.length; i++) {
             int randomIndex = (int) (Math.random() * characters.length);
             char temp = characters[i];
             characters[i] = characters[randomIndex];
             characters[randomIndex] = temp;
+
         }
-        return new String(characters);
+//        return new String(characters);
     }
 
 
