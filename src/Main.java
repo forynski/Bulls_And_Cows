@@ -25,9 +25,27 @@ public class Main {
         scanner.hasNextLine();
         String charLength = scanner.nextLine();
 
-        String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
+        String allChars = "0123456789abcdefghilkmnopqrstuvwxyz";
+
+
+        // CHARACTERS RANGE
+        // TODO: issue with indexing from 0
+        int fullLengthNumber = Integer.parseInt(charLength);
+        System.out.println(fullLengthNumber);
+
+        if (fullLengthNumber < 10) {
+            System.out.println("(0-" + allChars.charAt(fullLengthNumber) + ")");
+        } else {
+            System.out.println("(0-9, " + "a-" + allChars.charAt(fullLengthNumber) + ")");
+        }
+
+
+
 //        shuffle(allChars);
         allChars = allChars.substring(0, Integer.parseInt(charLength));
+
+
+
 
         List<String> symbols = Arrays.asList(allChars.split(""));
         Collections.shuffle(symbols);
@@ -63,12 +81,12 @@ public class Main {
 //        String secret = sb.toString();
         String secretAsterisks = "";
         for (int i = 0; i < sb.length(); i++) {
-            secretAsterisks+= '*';
+            secretAsterisks += '*';
         }
 //        String secretAsterisks = secret.replaceAll("[a-z0-9]+$", "*");
 
 //        String secret = sb.toString().replaceAll("[a-z0-9]+$", "*");
-        
+
         System.out.println("The secret is prepared: " + secretAsterisks + " (0-9, a-f).");
 
 //        return shuffle(sb);
