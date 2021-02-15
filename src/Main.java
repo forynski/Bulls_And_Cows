@@ -9,7 +9,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int sc = scanner.nextInt();
         if (sc > 36) {
-            System.out.println("Error: can't generate a secret number with a length of 36 because there aren't enough unique symbols.");
+            System.out.println("Error: maximum number of possible symbols in the code is 36 (0-9, a-z).");
+        } else if (!String.valueOf(sc).matches("[0-9a-z]+") || sc < 0) {
+            System.out.println("Error: + \"" + sc + " \" isn't a valid number.");
+
         } else {
 
             String secretCode = generateSecretCode(sc);
@@ -23,6 +26,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         scanner.hasNextLine();
         String charLength = scanner.nextLine();
+
+        if (Integer.parseInt(charLength) < sc) {
+            System.out.println("Error: it's not possible to generate a code with a length of " + charLength +
+                    " with " + sc + " unique symbols.");
+        }
 
         String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
 
@@ -92,7 +100,8 @@ public class Main {
             }
             System.out.println("Grade " + result);
         } while (bulls != sc);
+
+        System.out.println("Congratulations! You guessed the secret code.");
     }
 
 }
-
