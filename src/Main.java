@@ -25,7 +25,7 @@ public class Main {
         scanner.hasNextLine();
         String charLength = scanner.nextLine();
 
-        String allChars = "0123456789abcdefghilkmnopqrstuvwxyz";
+        String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
 
 
         // CHARACTERS RANGE
@@ -43,8 +43,6 @@ public class Main {
 
 //        shuffle(allChars);
         allChars = allChars.substring(0, Integer.parseInt(charLength));
-
-
 
 
         List<String> symbols = Arrays.asList(allChars.split(""));
