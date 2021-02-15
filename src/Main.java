@@ -19,7 +19,6 @@ public class Main {
 
     static String generateSecretCode(int sc) {
 
-
         System.out.println("Input the number of possible symbols in the code:");
         Scanner scanner = new Scanner(System.in);
         scanner.hasNextLine();
@@ -27,23 +26,10 @@ public class Main {
 
         String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-
-        // CHARACTERS RANGE
-        // TODO: issue with indexing from 0
         int fullLengthNumber = Integer.parseInt(charLength);
-        System.out.println(fullLengthNumber);
+        char charRange = allChars.charAt(fullLengthNumber - 1);
 
-        if (fullLengthNumber < 10) {
-            System.out.println("(0-" + allChars.charAt(fullLengthNumber) + ")");
-        } else {
-            System.out.println("(0-9, " + "a-" + allChars.charAt(fullLengthNumber) + ")");
-        }
-
-
-
-//        shuffle(allChars);
         allChars = allChars.substring(0, Integer.parseInt(charLength));
-
 
         List<String> symbols = Arrays.asList(allChars.split(""));
         Collections.shuffle(symbols);
@@ -51,71 +37,36 @@ public class Main {
         for (String symbol : symbols) {
             builder.append(symbol);
         }
-//        builder.toString();
 
         String chars = builder.substring(0, Integer.parseInt(charLength));
-
-
-//        Random random = new Random();
-
-//        int randomNumber = Math.abs(random.nextInt());
-//        String s2 = Integer.toString(randomNumber);
-
-//        char[] chars = s2.toCharArray();
-//        Set<Character> characterSet = new LinkedHashSet<>();
-//        for (char c : chars) {
-//            characterSet.add(c);
-//        }
-
-
 
         StringBuilder sb = new StringBuilder(sc);
         for (int i = 0; i < sc; i++) {
             sb.append(chars.charAt(i));
         }
-//        shuffle(sb);
 
+        StringBuilder secretAsterisks = new StringBuilder();
+        secretAsterisks.append("*".repeat(Math.max(0, sb.length())));
 
-//        String secret = sb.toString();
-        String secretAsterisks = "";
-        for (int i = 0; i < sb.length(); i++) {
-            secretAsterisks += '*';
+        if (fullLengthNumber <= 10) {
+            System.out.println("The secret is prepared: " + secretAsterisks + " (0-" + charRange + ")");
+        } else {
+            System.out.println("The secret is prepared: " + secretAsterisks + " (0-9, " + "a-" + charRange + ")");
         }
-//        String secretAsterisks = secret.replaceAll("[a-z0-9]+$", "*");
-
-//        String secret = sb.toString().replaceAll("[a-z0-9]+$", "*");
-
-        System.out.println("The secret is prepared: " + secretAsterisks + " (0-9, a-f).");
-
-//        return shuffle(sb);
         return sb.toString();
-//        return sb.substring(0, sc);
     }
-
-    private static void shuffle(String allChars) {
-        char[] characters = allChars.toCharArray();
-        for (int i = 0; i < characters.length; i++) {
-            int randomIndex = (int) (Math.random() * characters.length);
-            char temp = characters[i];
-            characters[i] = characters[randomIndex];
-            characters[randomIndex] = temp;
-
-        }
-//        return new String(characters);
-    }
-
 
     private static void calculateCowsAndBulls(String secretCode, int sc) {
 
         System.out.println("Okay, let's start a game!");
 
-        Scanner scanner = new Scanner(System.in);
-        scanner.hasNextLine();
-
         int bulls;
         int cows;
+        int turn = 1;
 
         do {
+            System.out.println("Turn " + turn++);
+            Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
             cows = 0;
             bulls = 0;
@@ -144,5 +95,4 @@ public class Main {
     }
 
 }
-
 
