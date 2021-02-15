@@ -10,7 +10,7 @@ public class Main {
         int sc = scanner.nextInt();
         if (sc > 36) {
             System.out.println("Error: maximum number of possible symbols in the code is 36 (0-9, a-z).");
-        } else if (!String.valueOf(sc).matches("[0-9a-z]+") || sc < 0) {
+        } else if (!String.valueOf(sc).matches("[0-9a-z]+") || sc == 0) {
             System.out.println("Error: + \"" + sc + " \" isn't a valid number.");
 
         } else {
@@ -30,38 +30,40 @@ public class Main {
         if (Integer.parseInt(charLength) < sc) {
             System.out.println("Error: it's not possible to generate a code with a length of " + charLength +
                     " with " + sc + " unique symbols.");
-        }
-
-        String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
-
-        int fullLengthNumber = Integer.parseInt(charLength);
-        char charRange = allChars.charAt(fullLengthNumber - 1);
-
-        allChars = allChars.substring(0, Integer.parseInt(charLength));
-
-        List<String> symbols = Arrays.asList(allChars.split(""));
-        Collections.shuffle(symbols);
-        StringBuilder builder = new StringBuilder();
-        for (String symbol : symbols) {
-            builder.append(symbol);
-        }
-
-        String chars = builder.substring(0, Integer.parseInt(charLength));
-
-        StringBuilder sb = new StringBuilder(sc);
-        for (int i = 0; i < sc; i++) {
-            sb.append(chars.charAt(i));
-        }
-
-        StringBuilder secretAsterisks = new StringBuilder();
-        secretAsterisks.append("*".repeat(Math.max(0, sb.length())));
-
-        if (fullLengthNumber <= 10) {
-            System.out.println("The secret is prepared: " + secretAsterisks + " (0-" + charRange + ")");
         } else {
-            System.out.println("The secret is prepared: " + secretAsterisks + " (0-9, " + "a-" + charRange + ")");
+
+            String allChars = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+            int fullLengthNumber = Integer.parseInt(charLength);
+            char charRange = allChars.charAt(fullLengthNumber - 1);
+
+            allChars = allChars.substring(0, Integer.parseInt(charLength));
+
+            List<String> symbols = Arrays.asList(allChars.split(""));
+            Collections.shuffle(symbols);
+            StringBuilder builder = new StringBuilder();
+            for (String symbol : symbols) {
+                builder.append(symbol);
+            }
+
+            String chars = builder.substring(0, Integer.parseInt(charLength));
+
+            StringBuilder sb = new StringBuilder(sc);
+            for (int i = 0; i < sc; i++) {
+                sb.append(chars.charAt(i));
+            }
+
+            StringBuilder secretAsterisks = new StringBuilder();
+            secretAsterisks.append("*".repeat(Math.max(0, sb.length())));
+
+            if (fullLengthNumber <= 10) {
+                System.out.println("The secret is prepared: " + secretAsterisks + " (0-" + charRange + ")");
+            } else {
+                System.out.println("The secret is prepared: " + secretAsterisks + " (0-9, " + "a-" + charRange + ")");
+            }
+            return sb.toString();
         }
-        return sb.toString();
+        return null;
     }
 
     private static void calculateCowsAndBulls(String secretCode, int sc) {
@@ -105,3 +107,5 @@ public class Main {
     }
 
 }
+
+
